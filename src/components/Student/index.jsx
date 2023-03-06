@@ -1,5 +1,5 @@
-export const Student = () => {
+export const Student = ({ children }) => {
     return (
-        <li></li>
+        <li>{children}</li>
     );
 }

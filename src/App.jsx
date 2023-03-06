@@ -1,3 +1,4 @@
+import { List } from "./components/List"
 import { Title } from "./components/Title"
 
 function App() {
@@ -5,6 +6,7 @@ function App() {
   return (
     <div className="App">
       <Title />
+      <List />
     </div>
   )
 }
