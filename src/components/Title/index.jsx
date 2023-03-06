@@ -1,5 +1,7 @@
+import "./styles.css";
+
 export const Title = () => {
     return (
-        <h1>Projeto Integrador - Univesp</h1>
+        <h1 className="title">Projeto Integrador - Univesp</h1>
     );
 }
