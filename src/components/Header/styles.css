@@ -13,8 +13,8 @@
     margin: 15px 30px;
 }
 
-.main-container span {
+.main-container h1 {
     font-size: 48px;
     font-weight: bold;
-    color: var(--third-color);
+    color: var(--fourth-color);
 }

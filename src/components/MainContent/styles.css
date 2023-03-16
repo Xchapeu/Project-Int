@@ -1,0 +1,18 @@
+.container {
+    height: calc(100vh - 110px);
+    background-color: var(--bg-color);
+    padding: 30px;
+}
+
+.container h2 {
+    font-size: 32px;
+    color: var(--third-color);
+    text-align: center;
+}
+
+.card-list {
+    display: flex;
+    flex-direction: row;
+    gap: 48px;
+    margin: 32px 0;
+}

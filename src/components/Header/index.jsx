@@ -3,11 +3,11 @@ import "./styles.css";
 
 export const Header = () => {
     return (
-        <div className="header">
+        <header className="header">
             <div className="main-container">
                 <img src={logoImg} alt="Logo Pet Agenda" />
-                <span>Pet Agenda</span>
+                <h1>Agenda Pet</h1>
             </div>
-        </div>
+        </header>
     );
 }
