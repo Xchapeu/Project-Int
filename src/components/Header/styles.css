@@ -1,5 +1,8 @@
 .header {
     background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .main-container {
@@ -17,4 +20,25 @@
     font-size: 48px;
     font-weight: bold;
     color: var(--fourth-color);
+}
+
+.logout-container {
+    margin: 30px;
+}
+
+.logout-container button {
+    padding: 12px 32px;
+    background: var(--secondary-color);
+    border: 1px solid var(--third-color);
+    border-radius: 8px;
+    color: var(--fourth-color);
+    font-size: 20px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all ease-in-out 0.2s;
+    cursor: pointer;
+}
+
+.logout-container button:hover {
+    background: var(--third-color);
+    color: var(--primary-color);
 }

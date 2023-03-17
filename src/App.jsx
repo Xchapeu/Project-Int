@@ -1,12 +1,12 @@
-import { LandingPage } from "./pages/LandingPage";
-import { HomePage } from "./pages/HomePage";
+
+import { AppRoutes } from "./AppRoutes";
 import "./global.css";
 
 function App() {
 
   return (
     <div className="App">
-      <LandingPage />
+      <AppRoutes />
     </div>
   )
 }
