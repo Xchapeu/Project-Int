@@ -1,18 +1,132 @@
 .container {
-    height: calc(100vh - 110px);
+    height: 100%;
     background-color: var(--bg-color);
     padding: 30px;
 }
 
 .container h2 {
     font-size: 32px;
-    color: var(--third-color);
+    font-family: var(--main-font);
+    color: var(--fourth-color);
     text-align: center;
 }
 
-.card-list {
-    display: flex;
-    flex-direction: row;
-    gap: 48px;
-    margin: 32px 0;
+.pet-registration {
+    margin: 1.5rem auto;
+    max-width: 60%;
+    padding: 3rem 7.5rem;
+    background-color: var(--primary-color);
+    border-radius: 1rem;
 }
+
+.pet-registration h3 {
+    text-align: center;
+    font-family: var(--main-font);
+    color: var(--fourth-color);
+    margin-bottom: 1.5rem;
+}
+
+.pet-registration fieldset {
+    border: none;
+}
+
+.pet-registration .field {
+    display: flex;
+    flex-direction: column;
+}
+
+.pet-registration label {
+    color: var(--fourth-color);
+    font-family: var(--main-font);
+    margin: .7rem .7rem 0 0;
+}
+
+.pet-registration label select {
+    padding: .5rem;
+    border: 1px solid var(--fourth-color);
+    border-radius: .5rem;
+    margin: .7rem;
+    font-family: var(--main-font);
+}
+
+.pet-registration input {
+    padding: .7rem;
+    border: 1px solid var(--fourth-color);
+    border-radius: .5rem;
+    font-family: var(--main-font);
+}
+
+.pet-registration .vaccines {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2.5rem;
+}
+
+.pet-registration .vaccines .title {
+    font-size: 1.5rem;
+    margin: 0 auto;
+}
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+

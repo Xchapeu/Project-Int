@@ -28,10 +28,11 @@
 .label-signup, .label-login {
     color: #FFF;
     font-size: 2.3em;
+    font-family: var(--main-font);
+    font-weight: bold;
     display: flex;
     justify-content: center;
     margin: 60px;
-    font-weight: bold;
     cursor: pointer;
     transition: ease-in-out 0.5s;
 }
@@ -62,6 +63,7 @@
     background: var(--fourth-color);
     font-size: 1em;
     font-weight: bold;
+    font-family: var(--main-font);
     outline: none;
     border: none;
     border-radius: 5px;
@@ -72,6 +74,7 @@
 .signup-button:hover,
 .login-button:hover {
     background: var(--third-color);
+    color: #000000;
 }
 
 .login {

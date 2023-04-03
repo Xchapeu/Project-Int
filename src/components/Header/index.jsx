@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import logoImg from "../../assets/logo.png";
 import { AuthContext } from "../../contexts/auth";
+import LogoutIcon from '@mui/icons-material/Logout';
 import "./styles.css";
 
 export const Header = () => {
@@ -19,7 +20,7 @@ export const Header = () => {
             </div>
             
             <div className="logout-container">
-                <button onClick={handleLogout}>Sair</button>
+                <button onClick={handleLogout}><p>SAIR</p><LogoutIcon /></button>
             </div>
 
         </header>

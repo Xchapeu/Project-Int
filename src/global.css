@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Alkatra:wght@400;500;600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -10,4 +12,6 @@
     --secondary-color: #2CB8B2;
     --third-color: #268FBE;
     --fourth-color: #551BB3;
+
+    --main-font: "Alkatra", cursive;
 }

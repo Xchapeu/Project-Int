@@ -1,5 +1,8 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../../contexts/auth";
+// import { Alert } from "@mui/material";
+// import AlertTitle from '@mui/material/AlertTitle';
+// import Stack from '@mui/material/Stack';
 import "./styles.css";
 
 export const LandingPage = () => {
@@ -23,11 +26,19 @@ export const LandingPage = () => {
         }
 
         console.log({ nomeComp, email, password, confirmPassword });
-        alert(`Obrigado ${nomeComp} por se cadastrar no Agenda Pet.`);
+        alert(`Obrigado ${nomeComp}, por se cadastrar no Agenda Pet.`);
         setNomeComp("");
         setEmail("");
         setPassword("");
         setConfirmPassword("");
+        
+        
+        // return  <Stack sx={{ width: '100%' }} spacing={2}>
+        //             <Alert onClose={() => {}} severity="success">
+        //                 <AlertTitle>Sucesso!</AlertTitle>
+        //                 Obrigado {nomeComp}, por se cadastrar no <strong>Agenda Pet</strong>
+        //             </Alert>
+        //         </Stack>
     }
 
     const handleLogin = (e) => {
