@@ -1,8 +1,6 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../../contexts/auth";
-// import { Alert } from "@mui/material";
-// import AlertTitle from '@mui/material/AlertTitle';
-// import Stack from '@mui/material/Stack';
+import logoImg from "../../assets/logo1.png";
 import "./styles.css";
 
 export const LandingPage = () => {
@@ -50,6 +48,7 @@ export const LandingPage = () => {
 
     return (
         <div className="content">
+            <img src={logoImg} alt="Agenda Pet" />
             <div className="main">
                 <input type="checkbox" id="chk" aria-hidden />
 

@@ -3,7 +3,15 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: linear-gradient(to bottom, var(--bg-color), var(--primary-color), var(--secondary-color), var(--third-color), var(--fourth-color));
+    /* background: linear-gradient(to bottom, var(--bg-color), var(--primary-color), var(--secondary-color), var(--third-color), var(--fourth-color)); */
+    background: url("../../assets/bg-image2.jpg") no-repeat fixed center;
+    position: relative;
+}
+
+.content img {
+    position: absolute;
+    left: .5rem;
+    /* bottom: -7rem; */
 }
 
 .main {
