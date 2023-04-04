@@ -2,6 +2,7 @@
     height: 100%;
     background-color: var(--bg-color);
     padding: 30px;
+    position: relative;
 }
 
 .container h2 {
@@ -22,6 +23,7 @@
 .pet-registration h3 {
     text-align: center;
     font-family: var(--main-font);
+    font-size: 1.6rem;
     color: var(--fourth-color);
     margin-bottom: 1.5rem;
 }
@@ -33,6 +35,15 @@
 .pet-registration .field {
     display: flex;
     flex-direction: column;
+}
+
+.pet-registration .petGender {
+  display: flex;
+  align-items: center;
+}
+
+.pet-registration .hasChip {
+  margin-top: 1.5rem;
 }
 
 .pet-registration label {
@@ -47,6 +58,7 @@
     border-radius: .5rem;
     margin: .7rem;
     font-family: var(--main-font);
+    font-size: 1rem;
 }
 
 .pet-registration input {
@@ -54,6 +66,7 @@
     border: 1px solid var(--fourth-color);
     border-radius: .5rem;
     font-family: var(--main-font);
+    font-size: 1rem;
 }
 
 .pet-registration .vaccines {
@@ -67,66 +80,24 @@
     margin: 0 auto;
 }
 
-/* The switch - the box around the slider */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-  }
-  
-  /* Hide default HTML checkbox */
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  /* The slider */
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  
-  input:checked + .slider {
-    background-color: #2196F3;
-  }
-  
-  input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-  }
-  
-  input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-  }
-  
-  /* Rounded sliders */
-  .slider.round {
-    border-radius: 34px;
-  }
-  
-  .slider.round:before {
-    border-radius: 50%;
-  }
+.pet-registration .btn-pet-submit {
+  align-self: center;
+  margin: 3rem 2rem;
+  background-color: var(--fourth-color);
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: all ease-in-out .2s;
+}
+
+.pet-registration .btn-pet-submit:hover {
+   background-color: var(--third-color);
+   color: #000000;
+   border: 1px solid var(--fourth-color);
+}
+
+
+
+
+
 

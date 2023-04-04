@@ -45,6 +45,7 @@
     background: #E0DEDE;
     display: flex;
     justify-content: center;
+    font-family: var(--main-font);
     margin: 20px auto;
     padding: 16px;
     border: none;

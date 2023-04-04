@@ -49,6 +49,7 @@
 .logout-container button:hover {
     background: var(--third-color);
     color: #000000;
+    border: 1px solid var(--fourth-color);
 }
 
 .logout-container button p {

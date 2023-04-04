@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { styled } from '@mui/material/styles';
-import Switch from '@mui/material/Switch';
-import "./styles.css";
-import { FormControlLabel } from "@mui/material";
 import FemaleIcon from '@mui/icons-material/Female';
 import MaleIcon from '@mui/icons-material/Male';
+
+import "./styles.css";
+import { TopButton } from "../TopButton";
+import { Vaccines } from "../Vaccines";
 
 const racas = [
     "Afegão Hound",
@@ -103,14 +103,21 @@ const racas = [
 
 export const MainContent = () => {
 
+    const [petNome, setPetNome] = useState("");
+    const [petIdade, setPetIdade] = useState(0);
     const [raca, setRaca] = useState(racas[0]);
+    const [petGender, setPetGender] = useState("macho");
+
+    const handlePetFormSubmit = () => {
+        console.log("Pet cadastrado com sucesso!");
+    }
 
     return (
-        <div className="container">
+        <div className="container" id="top">
             <h2>Bem vindo(a)!</h2>
             <section className="pet-registration">
                 <h3>Cadastre seu pet</h3>
-                <form>
+                <form onSubmit={handlePetFormSubmit}>
                     <fieldset className="field">
                         <label htmlFor="petNome">Nome do pet</label>
                         <input type="text" id="petNome" name="petNome" />
@@ -129,7 +136,22 @@ export const MainContent = () => {
                         </label>
                     </fieldset>
                     
-                    <fieldset>
+                    <fieldset className="petGender">
+                        <label htmlFor="petGender">Sexo:
+                            <select name="petGender" id="petGender" value={petGender} onChange={e => setPetGender(e.target.value)}>
+                                <option value="macho">Macho</option>
+                                <option value="femea">Fêmea</option>
+                            </select>
+                        </label>
+                        { petGender === "macho" ? <MaleIcon color="primary"/> : <FemaleIcon color="secondary"/> }
+                    </fieldset>
+
+                    <fieldset className="field">
+                        <label htmlFor="vermifugo">Última vermifugação:</label>
+                        <input type="date" id="vermifugo" name="vermifugo" />
+                    </fieldset>
+
+                    <fieldset className="hasChip">
                         <label htmlFor="petChip">Possui chip: </label>
                         <input type="checkbox" id="petChip" name="petChip" />
                     </fieldset>
@@ -137,20 +159,6 @@ export const MainContent = () => {
                     <fieldset>
                         <label htmlFor="petCastrado">Castração: </label>
                         <input type="checkbox" id="petCastrado" name="petCastrado" />
-                    </fieldset>
-
-                    <fieldset>
-                        <label className="switch">Sexo:
-                            <MaleIcon color="primary"/> 
-                            <input type="checkbox" />
-                            <span className="slider round"></span>
-                            <FemaleIcon color="secondary" />
-                        </label>
-                    </fieldset>
-
-                    <fieldset className="field">
-                        <label htmlFor="vermifugo">Última vermifugação:</label>
-                        <input type="date" id="vermifugo" name="vermifugo" />
                     </fieldset>
 
                     <div className="vaccines">
@@ -169,10 +177,17 @@ export const MainContent = () => {
                             <label htmlFor="antirabica">Antirábica - ultima vacinação: </label>
                             <input type="date" id="antirabica" name="antirabica" />
                         </fieldset>
+
+                        <input type="submit" value="Cadastrar pet" className="btn-pet-submit" />
                     </div>
 
                 </form>
             </section>
+
+            <Vaccines />
+
+            <TopButton />
+
         </div>
     );
 }
