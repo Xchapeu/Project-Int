@@ -11,12 +11,14 @@
 .content img {
     position: absolute;
     left: .5rem;
+    filter: drop-shadow(.25rem .25rem .125rem rgba(0, 0, 0, 0.7));
+    /* bottom: -7rem; */
 }
 
 .main {
     width: 350px;
     height: 500px;
-    background: linear-gradient(to top, var(--bg-color), var(--primary-color), var(--secondary-color), var(--third-color), var(--fourth-color));
+    background: linear-gradient(to top, #FFFFFF, #FFFFFF, var(--bg-color), var(--primary-color), var(--secondary-color), var(--third-color), var(--fourth-color));
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 5px 20px 50px #000;
