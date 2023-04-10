@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../../contexts/auth";
 import logoImg from "../../assets/logo1.png";
 import "./styles.css";
+import { api } from "../../services/api";
 
 export const LandingPage = () => {
 
@@ -15,7 +16,26 @@ export const LandingPage = () => {
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
 
-    const handleRegistration = (e) => {
+    const setEmptyFields = () => {
+        setNomeComp("");
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
+    }
+
+    const emailAlreadyExists = async (email) => {
+        const response = await api.get("/users", (req, res) => {
+            return res;
+        });
+
+        const emailExists = response.data.map(res => {
+            return res.email === email;
+        });
+
+        return emailExists;
+    }
+
+    const handleRegistration = async (e) => {
         e.preventDefault();
 
         if(password !== confirmPassword) {
@@ -23,26 +43,24 @@ export const LandingPage = () => {
             return;
         }
 
-        console.log({ nomeComp, email, password, confirmPassword });
-        alert(`Obrigado ${nomeComp}, por se cadastrar no Agenda Pet.`);
-        setNomeComp("");
-        setEmail("");
-        setPassword("");
-        setConfirmPassword("");
+        if(!emailAlreadyExists(email)) {
+            alert("Email já cadastrado!");
+            return;
+        }
+
+        alert(`Obrigado ${nomeComp}, por se cadastrar no Agenda Pet. Agora você já pode fazer seu Login.`);
+        setEmptyFields();
         
+        await api.post("/users", {
+            nome: nomeComp,
+            email: email,
+            senha: password
+        })
         
-        // return  <Stack sx={{ width: '100%' }} spacing={2}>
-        //             <Alert onClose={() => {}} severity="success">
-        //                 <AlertTitle>Sucesso!</AlertTitle>
-        //                 Obrigado {nomeComp}, por se cadastrar no <strong>Agenda Pet</strong>
-        //             </Alert>
-        //         </Stack>
     }
 
     const handleLogin = (e) => {
         e.preventDefault();
-
-        console.log({ loginEmail, loginPassword });
         login(loginEmail, loginPassword);
     }
 

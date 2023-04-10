@@ -16,47 +16,65 @@ export const AuthProvider = ({ children }) => {
 
         if(recoveredUser) {
             setUser(JSON.parse(recoveredUser));
+        } else {
+            navigate("/login");
         }
 
         setLoading(false);
 
     }, [])
 
-    const login = async (email, password) => {
-        console.log("Login auth",{ email, password });
+    const login = async (inputEmail, password) => {
 
         // api criar uma session 
         // const response = await createSession(email, password);
         // console.log("Login auth 2", response.data)
 
-        
-        const loggedUser = {
-            id: "1234",
-            email
-        }
+        try {
+            const response = await api.post("/login", { email: inputEmail, senha: password });
 
-        // const token = response.data.token;
+            // let usuario = response.data.filter(res => {
+            //     if(res.email === email) {
+            //         return res;
+            //     } 
+            //     // else {
+            //     //     alert("Email não cadastrado.");
+            //     //     throw new Error("Email not exists in Database");
+            //     // }
+            // });
 
-        localStorage.setItem("user", JSON.stringify(loggedUser));
-        // localStorage.setItem("token", token);
+            console.log(response.data);
 
-        // api.defaults.headers.Authorization = `Bearer ${token}`;
-
-        if(password === "secret") {
+            const { id, email, nome } = response.data;
+    
+            
+            const loggedUser = {
+                id: id,
+                email: email,
+                nome: nome
+            }
+    
+            // const token = response.data.token;
+    
+            localStorage.setItem("user", JSON.stringify(loggedUser));
+            // localStorage.setItem("token", token);
+    
+            // api.defaults.headers.Authorization = `Bearer ${token}`;
+    
             setUser(loggedUser);
             navigate("/");
-        } else {
-            alert("Invalid password");
-            return;
+            
+        } catch (error) {
+            console.log(error);
         }
     }
 
     const logout = () => {
-        console.log("Logout");
-        confirm("Tem certeza que deseja sair??");
-        localStorage.removeItem("user");
-        setUser(null);
-        navigate("/login");
+        if(window.confirm("Tem certeza que deseja sair??")) {
+            localStorage.removeItem("user");
+            setUser(null);
+            navigate("/login");
+        }
     }
 
     return (

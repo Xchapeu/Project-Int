@@ -1,0 +1,15 @@
+.footer-container {
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: auto;
+    padding: 0 6rem 0 2rem;
+    font-family: var(--main-font);
+}
+
+.footer-container img {
+    height: 9rem;
+    width: 13rem;
+    filter: drop-shadow(.0625rem .0625rem .125rem rgba(0, 0, 0, 0.7));
+}
