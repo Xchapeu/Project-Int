@@ -43,8 +43,6 @@ export const AuthProvider = ({ children }) => {
             //     // }
             // });
 
-            console.log(response.data);
-
             const { id, email, nome } = response.data;
     
             

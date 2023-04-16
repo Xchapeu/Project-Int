@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import FemaleIcon from '@mui/icons-material/Female';
 import MaleIcon from '@mui/icons-material/Male';
 
@@ -6,127 +6,71 @@ import "./styles.css";
 import { TopButton } from "../TopButton";
 import { Vaccines } from "../Vaccines";
 import { Footer } from "../Footer";
+import { api } from "../../services/api";
 
-const racas = [
-    "Afegão Hound",
-    "Affenpinscher",
-    "Airedale Terrier",
-    "Akita",
-    "American Staffordshire Terrier",
-    "Basenji",
-    "Basset Hound",
-    "Beagle",
-    "Beagle Harrier",
-    "Bearded Collie",
-    "Bedlington Terrier",
-    "Bichon Frisé",
-    "Bloodhound",
-    "Bobtail",
-    "Boiadeiro Australiano",
-    "Boiadeiro Bernês",
-    "Border Collie",
-    "Border Terrier",
-    "Borzoi",
-    "Boston Terrier",
-    "Boxer",
-    "Bulldog Francês",
-    "Bulldog Inglês",
-    "Bull Terrier",
-    "Bullmastiff",
-    "Cairn Terrier",
-    "Cane Corso",
-    "Cão D'água Português",
-    "Cão de Crista Chinês",
-    "Cavalier King Charles Spaniel",
-    "Chesapeake Bay Retriever",
-    "Chihuahua",
-    "Chow Chow",
-    "Cocker Spaniel Americano",
-    "Cocker Spaniel Inglês",
-    "Collie",
-    "Coton de Tuléar",
-    "Dachshund",
-    "Dálmata",
-    "Dandie Dinmont Terrier",
-    "Dobermann",
-    "Dog Argentino",
-    "Dog Alemão",
-    "Fila Brasileiro",
-    "Fox Terrier (Pelo duro e Pelo liso)",
-    "Foxhound Inglês",
-    "Galgo Escocês",
-    "Galgo irlandês",
-    "Golden Retriever",
-    "Grande Boiadeiro Suiço",
-    "Greyhound",
-    "Grifo da Bélgica",
-    "Husky Siberiano",
-    "Jack Russell Terrier",
-    "King Charles",
-    "Komondor",
-    "Labradoodle",
-    "Labrador Retriever",
-    "Lakeland Terrier",
-    "Leonberger",
-    "Lhasa Apso",
-    "Lulu da Pomerânia",
-    "Malamute do Alaska",
-    "Maltês",
-    "Mastiff",
-    "Mastim Napolitano",
-    "Mastim Tibetano",
-    "Norfolk Terrier",
-    "Norwich Terrier",
-    "Papillon",
-    "Pastor Alemão",
-    "Pastor Australiano",
-    "Pinscher Miniatura",
-    "Poodle",
-    "Pug",
-    "Rottweiler",
-    "Sem Raça Definida (SRD)",
-    "Shih Tzu",
-    "Silky Terrier",
-    "Skye Terrier",
-    "Staffordshire Bull Terrier",
-    "Terra Nova",
-    "Tosa",
-    "Vira-lata",
-    "Weimaraner",
-    "Welsh Corgi (Cardigan)",
-    "welsh Corgi (Pembroke)",
-    "West Highland White Terrier",
-    "Whippet",
-    "Xoloitzcuintli",
-    "Yorkshire Terrier"
-
-];
+const vaccines = [
+    "v8",
+    "v10",
+    "antirabica",
+    "gripe canina",
+    "leishmaniose",
+    "giardia",
+    "puppy"
+]
 
 export const MainContent = () => {
 
     const [petNome, setPetNome] = useState("");
     const [petIdade, setPetIdade] = useState(0);
-    const [raca, setRaca] = useState(racas[0]);
+    const [racasArray, setRacasArray] = useState([])
+    const [raca, setRaca] = useState(racasArray[0]);
     const [petGender, setPetGender] = useState("macho");
+    const [v8, setV8] = useState(Date());
+    const [v10, setV10] = useState(Date());
+    const [antirabica, setAntirabica] = useState(Date())
+    const [gripeCanina, setGripeCanina] = useState(Date())
+    const [leishmaniose, setLeishmaniose] = useState(Date())
 
-    const [tutor, setTutor] = useState({});  
+    const [tutor, setTutor] = useState("");  
 
-    const handlePetFormSubmit = () => {
-        console.log("Pet cadastrado com sucesso!");
+    const handlePetFormSubmit = (e) => {
+        e.preventDefault();
+
+        alert("Pet cadastrado com sucesso!");
     }
 
-    useEffect(() => {
+    async function getRacas() {
+        const response = await api.get("/racas", (req, res) => res);
+        const recoveredRacas = response.data;
+        const racaNomes = recoveredRacas.map(raca => raca.nome);
+
+        return racaNomes;
+    }
+
+    async function handleRacas() {
+        const racaRecovered = await getRacas();
+        setRacasArray(racaRecovered);
+    }
+
+    useLayoutEffect(() => {
         const recoveredTutorName = localStorage.getItem("user");
         
         if(recoveredTutorName) {
-            setTutor(JSON.parse(recoveredTutorName));
+            const tutor = JSON.parse(recoveredTutorName);
+            const tutorNome = tutor.nome;
+            const tmp = tutorNome.split(" ");
+            const primeiroNome = tmp[0];
+            
+            setTutor(primeiroNome);
         }
+        
+        handleRacas();
     }, []);
 
     return (
         <>
             <div className="container">
-                <h2>Bem vindo(a) {tutor.nome}!</h2>
+                <h2>Bem vindo(a) {tutor}!</h2>
                 <section className="pet-registration">
                     <h3>Cadastre seu pet</h3>
                     <form onSubmit={handlePetFormSubmit}>
@@ -143,7 +87,7 @@ export const MainContent = () => {
                         <fieldset className="field">
                             <label htmlFor="petRaca">Raça: 
                                 <select name="petRaca" id="petRaca" value={raca} onChange={e => setRaca(e.target.value)}>
-                                    { racas.map(raca => <option key={raca} value={raca}>{raca}</option>) }
+                                    { racasArray.map((raca, i) => <option key={`${raca} - ${i}`} value={raca}>{raca}</option>) }
                                 </select>
                             </label>
                         </fieldset>
@@ -175,7 +119,7 @@ export const MainContent = () => {
 
                         <div className="vaccines">
                             <label className="title">Vacinas:</label>
-                            <fieldset className="field">
+                            {/* <fieldset className="field">
                                 <label htmlFor="v8">V8 - ultima vacinação: </label>
                                 <input type="date" id="v8" name="v8" />
                             </fieldset>
@@ -188,7 +132,22 @@ export const MainContent = () => {
                             <fieldset className="field">
                                 <label htmlFor="antirabica">Antirábica - ultima vacinação: </label>
                                 <input type="date" id="antirabica" name="antirabica" />
-                            </fieldset>
+                            </fieldset> */}
+                            {
+                                vaccines.map(vaccine => {
+
+                                    return (
+                                        <fieldset className="field" key={vaccine}>
+                                            <label htmlFor={vaccine}>{vaccine} - ultima vacinação: </label>
+                                            <input 
+                                                type="date" 
+                                                id={vaccine} 
+                                                name={vaccine}
+                                            />
+                                        </fieldset>
+                                    )
+                                })
+                            }
 
                             <input type="submit" value="Cadastrar pet" className="btn-pet-submit" />
                         </div>
