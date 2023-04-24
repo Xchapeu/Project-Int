@@ -8,7 +8,7 @@ export const Card = ({ nome, idade, raca, gender, hasChip, isSterilized }) => {
                 <h3>{nome}</h3>
             </div>
             <div className="card-content">
-                <p><span>Idade: </span>{idade} Anos</p>
+                <p><span>Idade: </span>{idade} { idade <= 1 ? "Ano" : "Anos" }</p>
                 <p><span>Raça: </span>{raca}</p>
                 <p><span>Sexo: </span>{gender}</p>
                 <p><span>Possui chip: </span> { hasChip ? "Sim" : "Não" }</p>
