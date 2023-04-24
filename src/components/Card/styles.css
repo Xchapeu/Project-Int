@@ -4,6 +4,7 @@
     background-color: var(--primary-color);
     border-radius: 16px;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20%;
 }
 
 .card-header {

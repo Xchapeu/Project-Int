@@ -96,8 +96,15 @@
    border: 1px solid var(--fourth-color);
 }
 
-
-
-
-
-
+.pet-list-link {
+    text-decoration: none;
+    background-color: var(--fourth-color);
+    font-family: var(--main-font);
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    border: 1px solid var(--third-color);
+    padding: .5rem;
+    display: flex;
+    justify-content: center;
+    border-radius: .5rem;
+}

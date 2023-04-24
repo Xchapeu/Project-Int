@@ -1,22 +1,14 @@
 import { useLayoutEffect, useState } from "react";
 import FemaleIcon from '@mui/icons-material/Female';
 import MaleIcon from '@mui/icons-material/Male';
+import { api } from "../../services/api";
 
 import "./styles.css";
 import { TopButton } from "../TopButton";
 import { Vaccines } from "../Vaccines";
 import { Footer } from "../Footer";
-import { api } from "../../services/api";
+import { Link } from "react-router-dom";
 
-const vaccines = [
-    "v8",
-    "v10",
-    "antirabica",
-    "gripe canina",
-    "leishmaniose",
-    "giardia",
-    "puppy"
-]
 
 export const MainContent = () => {
 
@@ -26,7 +18,7 @@ export const MainContent = () => {
     const [raca, setRaca] = useState(racasArray[0]);
     const [petGender, setPetGender] = useState("macho");
     const [vermifugo, setVermifugo] = useState("");
-    const [isChipped, setIsChipped] = useState(false);
+    const [hasChip, setHasChip] = useState(false);
     const [isSterilized, setIsSterilized] = useState(false);
     const [v8, setV8] = useState("");
     const [v10, setV10] = useState("");
@@ -36,13 +28,38 @@ export const MainContent = () => {
     const [leishmaniose, setLeishmaniose] = useState("");
 
     const [tutor, setTutor] = useState("");
+    const recoveredTutor = localStorage.getItem("user");
+    const tutorParsed = JSON.parse(recoveredTutor);
 
-    const handlePetFormSubmit = (e) => {
+    
+    const setEmptyFormFields = () => {
+        setPetNome("");
+        setPetIdade(0);
+        setPetSexo("macho");
+        setRaca(racasArray[0]);
+        setHasChip(false);
+        setIsSterilized(false);
+    }
+
+    async function handlePetFormSubmit(e) {
         e.preventDefault();
 
-        console.log(petNome, petIdade, raca, petGender, vermifugo, v8, v10, antirabica, gripeCanina, giardia, leishmaniose);
+        const tutorId = tutorParsed.id;
+        
+        console.log(petNome, petIdade, raca, petGender, hasChip, isSterilized, tutorId);
+        
+        await api.post("/pets", {
+            nome: petNome,
+            idade: parseInt(petIdade),
+            sexo: petGender,
+            raca: raca,
+            chip: hasChip,
+            castracao: isSterilized,
+            tutorId: tutorId
+        });
 
-        alert("Pet cadastrado com sucesso!");
+        alert(`Seu pet chamado ${petNome}, foi cadastrado com sucesso!`);
+        setEmptyFormFields();
     }
 
     async function getRacas() {
@@ -59,11 +76,8 @@ export const MainContent = () => {
     }
 
     useLayoutEffect(() => {
-        const recoveredTutorName = localStorage.getItem("user");
-        
-        if(recoveredTutorName) {
-            const tutor = JSON.parse(recoveredTutorName);
-            const tutorNome = tutor.nome;
+        if(recoveredTutor) {
+            const tutorNome = tutorParsed.nome;
             const tmp = tutorNome.split(" ");
             const primeiroNome = tmp[0];
             
@@ -79,7 +93,7 @@ export const MainContent = () => {
                 <h2>Bem vindo(a) {tutor}!</h2>
                 <section className="pet-registration">
                     <h3>Cadastre seu pet</h3>
-                    <form onSubmit={handlePetFormSubmit}>
+                    <form onSubmit={() => handlePetFormSubmit(event)}>
                         <fieldset className="field">
                             <label htmlFor="petNome">Nome do pet</label>
                             <input 
@@ -122,7 +136,7 @@ export const MainContent = () => {
                             { petGender === "macho" ? <MaleIcon color="primary"/> : <FemaleIcon color="secondary"/> }
                         </fieldset>
 
-                        <fieldset className="field">
+                        {/* <fieldset className="field">
                             <label htmlFor="vermifugo">Última vermifugação:</label>
                             <input 
                                 type="date" 
@@ -131,14 +145,16 @@ export const MainContent = () => {
                                 value={vermifugo}
                                 onChange={e => setVermifugo(e.target.value)}
                             />
-                        </fieldset>
+                        </fieldset> */}
 
                         <fieldset className="hasChip">
                             <label htmlFor="petChip">Possui chip: </label>
                             <input 
                                 type="checkbox" 
                                 id="petChip" 
-                                name="petChip" 
+                                name="petChip"
+                                value={hasChip}
+                                onChange={e => setHasChip(e.target.checked)}
                             />
                         </fieldset>
 
@@ -147,12 +163,14 @@ export const MainContent = () => {
                             <input 
                                 type="checkbox" 
                                 id="petCastrado" 
-                                name="petCastrado" 
+                                name="petCastrado"
+                                value={isSterilized}
+                                onChange={e => setIsSterilized(e.target.checked)}
                             />
                         </fieldset>
 
                         <div className="vaccines">
-                            <label className="title">Vacinas:</label>
+                            {/* <label className="title">Vacinas:</label>
                             <fieldset className="field">
                                 <label htmlFor="v8">V8 - ultima vacinação: </label>
                                 <input 
@@ -217,7 +235,7 @@ export const MainContent = () => {
                                     value={leishmaniose}
                                     onChange={e => setLeishmaniose(e.target.value)} 
                                 />
-                            </fieldset>
+                            </fieldset> */}
                             {/* {
                                 vaccines.map(vaccine => {
 
@@ -238,6 +256,8 @@ export const MainContent = () => {
                         </div>
 
                     </form>
+                
+                    <Link to="/pets" className="pet-list-link">Lista de pets cadastrados</Link>
                 </section>
 
                 <Vaccines />

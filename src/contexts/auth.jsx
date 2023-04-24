@@ -29,6 +29,7 @@ export const AuthProvider = ({ children }) => {
         // api criar uma session 
         // const response = await createSession(email, password);
         // console.log("Login auth 2", response.data)
+        localStorage.removeItem("user");
 
         try {
             const response = await api.post("/login", { email: inputEmail, senha: password });
