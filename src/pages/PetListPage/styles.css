@@ -16,12 +16,13 @@
 
 .pet-list {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row;
+    flex-wrap: wrap;
     list-style: none;
     padding: 5%;
     gap: 5%;
     height: 100%;
+    width: 100%;
 }
 
 .pet-list-empty {
