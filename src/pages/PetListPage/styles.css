@@ -28,7 +28,9 @@
 .pet-list-empty {
     font-family: var(--main-font);
     font-size: 3rem;
-    margin-bottom: 16%;
+    margin-bottom: 9%;
     color: #777777;
+    width: 100%;
+    text-align: center;
 }
 
