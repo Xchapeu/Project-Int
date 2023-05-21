@@ -1,20 +1,20 @@
 .logout-container {
-    margin: 30px;
+    margin: 1em;
 }
 
 .logout-container button {
-    padding: .325rem .75rem;
+    padding: .325em .75em;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: .8em;
     background: var(--fourth-color);
-    border: 1px solid var(--third-color);
-    border-radius: 8px;
+    border: .05em solid var(--third-color);
+    border-radius: .8em;
     color: #FFFFFF;
-    font-size: 20px;
+    font-size: 1.5em;
     font-weight: bold;
     font-family: var(--main-font);
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: .125em .125em .125em rgba(0, 0, 0, 0.2);
     transition: all ease-in-out 0.2s;
     cursor: pointer;
 }
@@ -22,9 +22,9 @@
 .logout-container button:hover {
     background: var(--third-color);
     color: #000000;
-    border: 1px solid var(--fourth-color);
+    border: .1em solid var(--fourth-color);
 }
 
 .logout-container button p {
-    padding-top: .325rem;
+    padding-top: .325em;
 }

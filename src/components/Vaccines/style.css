@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-top: 5rem;
+  margin: 5rem auto;
   background-color: var(--primary-color);
   border-radius: 1rem;
 }
@@ -19,4 +19,10 @@
 .vaccines-info img {
   max-width: 90%;
   margin-bottom: 5rem;
+}
+
+@media (min-width: 700px) and (orientation: landscape){
+  .vaccines-info {
+      max-width: 730px;
+  }
 }
