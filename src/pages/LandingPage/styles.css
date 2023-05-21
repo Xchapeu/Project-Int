@@ -1,27 +1,30 @@
 .content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    /* background: linear-gradient(to bottom, var(--bg-color), var(--primary-color), var(--secondary-color), var(--third-color), var(--fourth-color)); */
-    background: url("../../assets/bg-image2.jpg") no-repeat fixed center;
+    height: 100vh;
+    width: auto;
+    min-width: 475px;
     position: relative;
+    padding-left: 4em;
 }
 
 .content img {
-    position: absolute;
-    left: .5rem;
-    filter: drop-shadow(.25rem .25rem .125rem rgba(0, 0, 0, 0.7));
+    width: 25%;
+    min-width: 17em;
+    filter: drop-shadow(0.25rem 0.25rem 0.125rem rgba(0, 0, 0, 0.7));
     /* bottom: -7rem; */
+    margin: -5%;
 }
 
 .main {
-    width: 350px;
-    height: 500px;
+    width: 30%;
+    height: 75%;
+    min-width: 22em;
+    min-height: 32em;
+    max-width: 30em;
+    max-height: 40em;
     background: linear-gradient(to top, #FFFFFF, #FFFFFF, var(--bg-color), var(--primary-color), var(--secondary-color), var(--third-color), var(--fourth-color));
     overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 5px 20px 50px #000;
+    border-radius: 1.5em;
+    box-shadow: 0.5em 2em 5em #000;
 }
 
 #chk {
@@ -41,7 +44,7 @@
     font-weight: bold;
     display: flex;
     justify-content: center;
-    margin: 60px;
+    margin: 1em;
     cursor: pointer;
     transition: ease-in-out 0.5s;
 }
@@ -88,10 +91,10 @@
 }
 
 .login {
-    height: 460px;
+    height: 100%;
     background: #FFF;
     border-radius: 60% / 10%;
-    transform: translateY(-180px);
+    transform: translateY(-30%);
     transition: ease-in-out 0.8s;
 }
 
@@ -102,7 +105,7 @@
 }
 
 #chk:checked ~ .login {
-    transform: translateY(-500px);
+    transform: translateY(-95%);
 }
 
 #chk:checked ~ .login .label-login {
@@ -111,4 +114,28 @@
 
 #chk:checked ~ .signup .label-signup {
     transform: scale(.6);
+}
+@media (max-width: 700px) and (orientation: portrait){
+    .content {
+        background-position-y: top;
+        background-size: contain;
+    }
+    .content img {
+
+        margin: 3%;
+        margin-left: -29%;
+    }
+}
+@media (max-width: 700px) and (orientation: landscape){
+    .content {
+        padding: 1em;
+    }
+    .content img {
+        height: min-content;
+        position: fixed;
+        right: 0;
+    }
+    .signup {
+        margin-bottom: 1em;
+    }
 }

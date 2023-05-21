@@ -16,4 +16,6 @@
     --third-color: #268FBE;
     --fourth-color: #551BB3;
     --main-font: "Alkatra", cursive;
+    background: url(/src/assets/bg-image2.jpg) no-repeat fixed center;
+    background-size: cover;
 }

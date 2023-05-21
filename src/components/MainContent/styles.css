@@ -107,6 +107,7 @@
     display: flex;
     justify-content: center;
     border-radius: .5rem;
+    white-space: nowrap;
 }
 
 @media (min-width: 700px) and (orientation: landscape){
