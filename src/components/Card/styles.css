@@ -1,8 +1,7 @@
 .card-container {
-    width: 240px;
-    height: 320px;
+    width: 90vw;
     background-color: var(--primary-color);
-    border-radius: 16px;
+    border-radius: 2em;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
     margin-bottom: 20%;
 }
@@ -10,24 +9,31 @@
 .card-header {
     text-align: center;
     background-color: var(--secondary-color);
-    border-radius: 16px 16px 0 0;
-    padding: 16px;
+    border-radius: 1em 1em 0 0;
+    padding: 1em;
 }
 
 .card-header h3 {
     color: var(--fourth-color);
-    font-size: 24px;
+    font-size: 2em;
 }
 
 .card-content {
-    padding: 24px;
+    padding: 1em;
 }
 
 .card-content p {
-    margin: 10px 0;
+    margin: .5em 0;
+    font-size: 1.5em;
     color: var(--fourth-color)
 }
 
 .card-content p span {
     font-weight: bold;
+}
+
+@media (orientation: landscape){
+    .card-container {
+        width: 20vw;
+    }
 }

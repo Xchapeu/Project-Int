@@ -12,12 +12,12 @@
     font-family: var(--main-font);
     color: var(--fourth-color);
     font-size: 2rem;
-    margin-top: 1.5rem;
+    margin-top: .5rem;
 }
 
 .pet-list {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     list-style: none;
     padding: 5%;
@@ -38,5 +38,10 @@
 @media (max-width: 700px) and (orientation: portrait){
     .pet-list-container {
         min-height: 58vh;
+    }
+}
+@media (orientation: landscape){
+    .pet-list {
+        flex-direction: row;
     }
 }

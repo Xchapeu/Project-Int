@@ -47,9 +47,8 @@ export const PetListPage = () => {
             <section className="pet-list-container">
                 <h3 className="title">Seus pets</h3>
                 <ul className="pet-list">
-                <h4 className="pet-list-empty">Nenhum pet cadastrado ainda!</h4>
                     {
-                       /* pets.length === 0 ?
+                        pets.length === 0 ?
                         ( <h4 className="pet-list-empty">Nenhum pet cadastrado ainda!</h4> ) : 
                         pets.map((pet, i) => {
                             return(
@@ -64,7 +63,7 @@ export const PetListPage = () => {
                                     />
                                 </li>
                             )
-                        })*/
+                        })
                     }
                 </ul>
             </section>
