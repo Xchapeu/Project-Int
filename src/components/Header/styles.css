@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: space-between;
     min-width: 375px;
+    min-height: 15vh;
 }
 
 
@@ -34,5 +35,6 @@
 @media (max-width: 700px) and (orientation: portrait){
 	.header {
         flex-direction: column;
+        min-height: 21vh;
     }
 }
