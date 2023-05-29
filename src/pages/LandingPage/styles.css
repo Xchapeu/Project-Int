@@ -119,11 +119,18 @@
     .content {
         background-position-y: top;
         background-size: contain;
+        min-width: unset;
+        padding-left: unset;
     }
+    /*
     .content img {
-
         margin: 3%;
         margin-left: -29%;
+    }
+    */
+    .main{
+        margin: 0 9%;
+        height: 60%;
     }
 }
 @media (max-width: 700px) and (orientation: landscape){
