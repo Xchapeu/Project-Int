@@ -9,6 +9,14 @@
     scrollbar-width: thin;
 }
 
+html,body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+}
+
 :root {
     --bg-color: #A9F04D;
     --primary-color: #3DDB8F;
@@ -18,4 +26,7 @@
     --main-font: "Alkatra", cursive;
     background: url(/src/assets/bg-image2.jpg) no-repeat fixed center;
     background-size: cover;
+    position: fixed;
+    width: 100%;
+    height:100%; 
 }
