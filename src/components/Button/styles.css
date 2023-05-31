@@ -1,9 +1,9 @@
-.logout-container {
+.button-container {
     margin: 1em;
 }
 
-.logout-container button {
-    padding: .325em .75em;
+.button-container button {
+    padding: .1615em .75em;
     display: flex;
     align-items: center;
     gap: .8em;
@@ -19,12 +19,31 @@
     cursor: pointer;
 }
 
-.logout-container button:hover {
+.button-container button:hover {
     background: var(--third-color);
     color: #000000;
     border: .1em solid var(--fourth-color);
 }
 
-.logout-container button p {
+.button-container button p {
     padding-top: .325em;
+}
+
+@media (max-width: 700px) and (orientation: portrait) {
+
+    .button-container {
+        margin: 0 auto;
+        position: absolute;
+        top: 32%;
+        left: 5%;
+    }
+
+    .button-container button {
+        padding: .5em;
+        border-radius: 50%;
+    }
+
+    .button-container button p {
+        display: none;
+    }
 }

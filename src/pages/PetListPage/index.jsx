@@ -32,7 +32,7 @@ export const PetListPage = () => {
         const petsRecovered = await getPets();
         setPets(petsRecovered);
     }
-
+    
     useEffect(() => {
         handleRetrievePets();
     }, [])
@@ -53,6 +53,7 @@ export const PetListPage = () => {
                         pets.map((pet, i) => {
                             return(
                                 <li key={`${pet.nome}-${i}`}>
+                                    {console.log(pet)}
                                     <Card 
                                         nome={pet.nome}
                                         idade={pet.idade}
@@ -60,6 +61,8 @@ export const PetListPage = () => {
                                         gender={pet.sexo}
                                         hasChip={pet.chip}
                                         isSterilized={pet.castracao}
+                                        petId={pet.id}
+                                        tutorId={pet.tutorId}
                                     />
                                 </li>
                             )

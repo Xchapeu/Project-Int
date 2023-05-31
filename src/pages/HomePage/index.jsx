@@ -6,7 +6,6 @@ import { AuthContext } from "../../contexts/auth";
 import { useContext } from "react";
 
 export const HomePage = () => {
-
     const { logout } = useContext(AuthContext);
 
     const handleLogout = () => {
