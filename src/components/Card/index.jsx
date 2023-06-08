@@ -13,8 +13,8 @@ export const Card = ({ nome, idade, raca, gender, hasChip, isSterilized, petId, 
                 <p><span>Sexo: </span>{gender}</p>
                 <p><span>Possui chip: </span> { hasChip ? "Sim" : "Não" }</p>
                 <p><span>{gender === "macho" ? "Castrado: " : "Castrada: "}</span> { isSterilized ? "Sim" : "Não" }</p>
-                <p><span>Id do pet: </span>{petId}</p>
-                <p><span>Id do tutor: </span>{tutorId}</p>
+                {/* <p><span>Id do pet: </span>{petId}</p>
+                <p><span>Id do tutor: </span>{tutorId}</p> */}
             </div>
         </div>
     );

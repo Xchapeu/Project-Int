@@ -23,7 +23,7 @@ export const PetListPage = () => {
     }
 
     async function getPets() {
-        const response = await api.get(`/${tutorId}/pets`, (req, res) => res);
+        const response = await api.get(`users/${tutorId}/pets`, (req, res) => res);
         const recoveredPets = response.data;
         return recoveredPets;
     }
