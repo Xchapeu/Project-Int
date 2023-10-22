@@ -2,7 +2,7 @@ import petParkIbirapueraImgSrc from './src/assets/petFriendlyLocals/cachorrodrom
 import botanikafeImgSrc from './src/assets/petFriendlyLocals/botanikafe.jpg'
 import cinepetImgSrc from './src/assets/petFriendlyLocals/cinepet.jpg'
 import freRestobarImgSrc from './src/assets/petFriendlyLocals/freRestobar.jpeg'
-import leBottegheImgSrc from './src/assets/petFriendlyLocals/leBotteghe.jpg'
+import leBottegheImgSrc from './src/assets/petFriendlyLocals/leBotteghe.JPG'
 import laJuoImgSrc from './src/assets/petFriendlyLocals/laJuo.png'
 import somaImgSrc from './src/assets/petFriendlyLocals/somaCervejaria.jpg'
 
