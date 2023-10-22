@@ -49,3 +49,4 @@ export const parks = [
         imgSrc: trianonImgSrc
     }
 ]
+
