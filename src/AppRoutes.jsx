@@ -5,6 +5,9 @@ import { AuthProvider, AuthContext } from "./contexts/auth";
 import { HomePage } from "./pages/HomePage";
 import { LandingPage } from "./pages/LandingPage";
 import { PetListPage } from "./pages/PetListPage";
+import { PetLocalsPage } from "./pages/PetLocalsPage";
+import { PetParksPage } from "./pages/PetParksPage";
+import { PetClinicsPage } from "./pages/PetClinicsPage";
 
 export const AppRoutes = () => {
 
@@ -29,6 +32,9 @@ export const AppRoutes = () => {
                     <Route exact path="/login" element={<LandingPage />} />
                     <Route exact path="/" element={<Private><HomePage /></Private>} />
                     <Route exact path="/pets" element={<Private><PetListPage /></Private>} />
+                    <Route exact path="/pets/locais-pet-friendly" element={<Private><PetLocalsPage /></Private>} />
+                    <Route exact path="/pets/parques" element={<Private><PetParksPage /></Private>} />
+                    <Route exact path="/pets/clinicas-veterinarias" element={<Private><PetClinicsPage /></Private>} />
                 </Routes>
             </AuthProvider>
         </Router>

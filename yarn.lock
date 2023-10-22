@@ -1046,6 +1046,11 @@ react-is@^18.2.0:
   resolved "https://registry.npmjs.org/react-is/-/react-is-18.2.0.tgz"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
 
+react-manifest@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/react-manifest/-/react-manifest-1.0.5.tgz#158ab0a375c3144b13603c75f2c20af62ae32066"
+  integrity sha512-HlIz2Zx7JC+CJQHI+3x6gZj7uF6jRcPMFmgmabZUOGcNdMr56+urj1E1U/APobt12iL5V1TzMWSu1XkVwlhlNw==
+
 react-refresh@^0.14.0:
   version "0.14.0"
   resolved "https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz"
