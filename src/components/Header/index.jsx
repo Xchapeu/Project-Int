@@ -1,4 +1,5 @@
 import logoImg from "../../assets/logo1.png";
+import { NavBar } from "../NavBar";
 import "./styles.css";
 
 export const Header = ({ children }) => {
@@ -9,7 +10,7 @@ export const Header = ({ children }) => {
                 {/* <img src={logoImg} alt="Logo Pet Agenda" /> */}
                 <h1>Agenda Pet</h1>
             </div>
-
+            <NavBar />
             { children } 
         </header>
     );

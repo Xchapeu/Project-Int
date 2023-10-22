@@ -257,7 +257,6 @@ export const MainContent = () => {
 
                     </form>
                 
-                    <Link to="/pets" className="pet-list-link">Lista de pets cadastrados</Link>
                 </section>
 
                 <Vaccines />
