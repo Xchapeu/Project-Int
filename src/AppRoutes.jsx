@@ -8,6 +8,7 @@ import { PetListPage } from "./pages/PetListPage";
 import { PetLocalsPage } from "./pages/PetLocalsPage";
 import { PetParksPage } from "./pages/PetParksPage";
 import { PetClinicsPage } from "./pages/PetClinicsPage";
+import { TrophiesPage } from "./pages/TrophiesPage";
 
 export const AppRoutes = () => {
 
@@ -35,6 +36,7 @@ export const AppRoutes = () => {
                     <Route exact path="/pets/locais-pet-friendly" element={<Private><PetLocalsPage /></Private>} />
                     <Route exact path="/pets/parques" element={<Private><PetParksPage /></Private>} />
                     <Route exact path="/pets/clinicas-veterinarias" element={<Private><PetClinicsPage /></Private>} />
+                    <Route exact path="/trophies" element={<Private><TrophiesPage /></Private>} />
                 </Routes>
             </AuthProvider>
         </Router>

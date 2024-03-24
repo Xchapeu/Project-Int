@@ -5,6 +5,7 @@ export const NavBar = () => {
     return (
         <ul className="navBarContainer">
             <li><Link to="/">Home</Link></li>
+            <li><Link to="/trophies">Conquistas</Link></li>
             <li><Link to="/pets">Seus Pets</Link></li>
             <li className="dropdown">
                 <Link to="#" className="dropbtn">Locais</Link>

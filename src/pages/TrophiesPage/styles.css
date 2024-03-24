@@ -1,0 +1,59 @@
+.container {
+    height: 100%;
+    background-color: var(--bg-color);
+    padding: 2em;
+    position: relative;
+    min-width: 375px;
+}
+
+.container h2 {
+    font-size: 2rem;
+    font-family: var(--main-font);
+    color: var(--fourth-color);
+    text-align: center;
+}
+
+.main-container .left-container {
+    width: 100%;
+}
+
+.achievements-list-container {
+    width: 50%;
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.achievements-list-container .achievements-list-title {
+    font-family: var(--main-font);
+    text-align: center;
+    padding-top: 1rem;
+}
+
+.achievements-list {
+    list-style: none;
+    display: flex;
+    padding: 0 0 2rem 2rem ;
+    flex-direction: column;
+}
+
+.achievement-item .xp-amount {
+    color: green;
+    font-weight: bold;
+}
+
+.achievement-item {
+    font-family: var(--main-font);
+}
+
+.achievement-item-completed,
+.achievement-item-completed .xp-amount {
+    color: grey;
+    text-decoration: line-through;
+}
+
+.achievement {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
