@@ -13,18 +13,31 @@
     text-align: center;
 }
 
-.main-container .left-container {
+.main-container {
+    display: flex;
+    align-items: stretch;
+    gap: 5%;
+}
+
+.main-container .left-container  {
     width: 100%;
 }
 
+.main-container .right-container {
+    width: 100%;
+    min-height: 50%;
+}
+
 .achievements-list-container {
-    width: 50%;
+    width: 100%;
+    min-width: 40%;
     background-color: var(--primary-color);
     border-radius: 8px;
     margin-top: 1rem;
 }
 
-.achievements-list-container .achievements-list-title {
+.achievements-list-container .achievements-list-title,
+.empty-list-message {
     font-family: var(--main-font);
     text-align: center;
     padding-top: 1rem;
