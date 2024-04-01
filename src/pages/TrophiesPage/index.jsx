@@ -2,7 +2,7 @@ import { Header } from '../../components/Header';
 import { Button } from "../../components/Button";
 import LogoutIcon from '@mui/icons-material/Logout';
 import { AuthContext } from "../../contexts/auth";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Footer } from '../../components/Footer';
 import { achievements } from '../../../achievements';
 import "./styles.css";
@@ -10,12 +10,34 @@ import { TopButton } from '../../components/TopButton';
 
 export const TrophiesPage = () => {
     const { logout } = useContext(AuthContext);
-    const [uncompleted, setUncompleted] = useState(achievements);
+    const [items, setItems] = useState(achievements);
+    const [uncompleted, setUncompleted] = useState(items);
     const [completed, setCompleted] = useState([]);
+
+    const handleCheckboxChange = (itemId) => {
+        setItems(prevItems => {
+            const updatedItems = prevItems.map(item => {
+                if (item.id === itemId) {
+                    return { ...item, completed: !item.completed };
+                }
+                return item;
+            });
+    
+            return updatedItems;
+        });
+    };
 
     const handleLogout = () => {
         logout();
     }
+
+    useEffect(() => {
+        const uncompletedItems = items.filter(item => !item.completed);
+        const completedItems = items.filter(item => item.completed);
+    
+        setUncompleted(uncompletedItems);
+        setCompleted(completedItems);
+    }, [items]);
 
     return (
         <>
@@ -34,11 +56,17 @@ export const TrophiesPage = () => {
                             <ul className='achievements-list uncompleted-list'>
                                 {
                                     uncompleted.map(item => {
-                                        let achievement = `achievement${item.id}`
+                                        let achievement = `achievement${item.id}`;
                                         return (
                                             <li className='achievement-item' key={item.id}>
                                                 <div className='achievement'>
-                                                    <input type="checkbox" name={achievement} id={achievement} data-amount={item.xpAmount}/>
+                                                    <input 
+                                                        type="checkbox" 
+                                                        name={achievement} 
+                                                        id={achievement} 
+                                                        data-amount={item.xpAmount}
+                                                        onChange={() => handleCheckboxChange(item.id)}
+                                                    />
                                                     <label htmlFor={achievement}>{item.title} - <span className='xp-amount'>{item.xpAmount} exp</span></label>
                                                 </div>
                                             </li>
@@ -50,30 +78,26 @@ export const TrophiesPage = () => {
                         <div className='achievements-list-container'>
                             <h3 className='achievements-list-title'>Tarefas concluídas</h3>
                             <ul className='achievements-list completed-list'>
-                                <li className='achievement-item achievement-item-completed'>
-                                    <div className='achievement'>
-                                        <input type="checkbox" name='achievement-6' id='achievement-6' checked/>
-                                        <label htmlFor="achievement-6">Conquista 6 - <span className='xp-amount'>63 exp</span></label>
-                                    </div>
-                                </li>
-                                <li className='achievement-item achievement-item-completed'>
-                                    <div className='achievement'>
-                                        <input type="checkbox" name='achievement-7' id='achievement-7' checked/>
-                                        <label htmlFor="achievement-7">Conquista 7 - <span className='xp-amount'>63 exp</span></label>
-                                    </div>
-                                </li>
-                                <li className='achievement-item achievement-item-completed'>
-                                    <div className='achievement'>
-                                        <input type="checkbox" name='achievement-8' id='achievement-8' checked/> 
-                                        <label htmlFor="achievement-8">Conquista 8 - <span className='xp-amount'>63 exp</span></label>
-                                    </div>
-                                </li>
-                                <li className='achievement-item achievement-item-completed'>
-                                    <div className='achievement'>
-                                        <input type="checkbox" name='achievement-9' id='achievement-9' checked/>
-                                        <label htmlFor="achievement-9">Conquista 9 - <span className='xp-amount'>63 exp</span></label>
-                                    </div>
-                                </li>
+                                {
+                                    completed.map(item => {
+                                        let achievement = `achievement${item.id}`;
+                                        return (
+                                            <li className='achievement-item achievement-item-completed' key={item.id}>
+                                                <div className='achievement'>
+                                                    <input 
+                                                        type="checkbox" 
+                                                        name={achievement} 
+                                                        id={achievement}
+                                                        data-amount={item.xpAmount}
+                                                        onChange={() => handleCheckboxChange(item.id)} 
+                                                        checked 
+                                                    />
+                                                    <label htmlFor={achievement}>{item.title} - <span className='xp-amount'>{item.xpAmount} exp</span></label>
+                                                </div>
+                                            </li>
+                                        )
+                                    })
+                                }
                             </ul>
                         </div>
                     </div>
