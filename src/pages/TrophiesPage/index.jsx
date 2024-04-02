@@ -43,9 +43,7 @@ export const TrophiesPage = () => {
             }
         }
     
-        if (currentLevel === levels[levels.length - 1].level) {
-            setPointsNeededForNextLevel(0);
-        }
+        if (currentLevel === levels[levels.length - 1].level) setPointsNeededForNextLevel(0);
     
         return currentLevel;
     };
@@ -57,9 +55,7 @@ export const TrophiesPage = () => {
     useEffect(() => {
         const uncompletedItems = items.filter(item => !item.completed);
         const completedItems = items.filter(item => item.completed);
-    
         const totalCompletedAmount = completedItems.reduce((total, item) => total + parseInt(item.xpAmount), 0);
-        console.log(totalCompletedAmount);
 
         setUncompleted(uncompletedItems);
         setCompleted(completedItems);
@@ -134,10 +130,13 @@ export const TrophiesPage = () => {
 
                     <div className='right-container'>
                         <div className="achievements-list-container">
-                            <h3 className='achievements-list-title'>
-                                Total de pontos: {totalAmount} <br/> 
-                                Nivel: {currentLevel}<br/>
-                                Pontos prox nivel: {pointsNeededForNextLevel} 
+                            <div className="header">
+                                <strong>{currentLevel}</strong>
+                            </div>
+                            <h3 className='achievements-list-title-right'>
+                                Nivel<br/><br/>
+                                Total de pontos:   {totalAmount} <br/> 
+                                { currentLevel < 10 ? `Faltam para o nível ${currentLevel + 1} ➡ ${pointsNeededForNextLevel} pontos`: "" }
                             </h3>
                         </div>
                     </div>

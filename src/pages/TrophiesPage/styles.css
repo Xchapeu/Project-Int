@@ -28,12 +28,28 @@
     min-height: 50%;
 }
 
+.achievements-list-container .header {
+    font-size: 8.75rem;
+    font-weight: 600;
+    color: var(--fourth-color);
+    background: url('/levelup.svg') no-repeat center;
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+}
+
+/* .achievements-list-container > .header > strong {
+    font-family: var(--main-font);
+} */
+
 .achievements-list-container {
+    padding: 2rem 3rem;
     width: 100%;
     min-width: 40%;
     background-color: var(--primary-color);
     border-radius: 8px;
     margin-top: 1rem;
+    text-align: center;
 }
 
 .achievements-list-container .achievements-list-title,
@@ -41,6 +57,13 @@
     font-family: var(--main-font);
     text-align: center;
     padding-top: 1rem;
+    color: var(--fourth-color)
+}
+
+.achievements-list-title-right {
+    font-family: var(--main-font);
+    text-align: center;
+    color: var(--fourth-color)
 }
 
 .achievements-list {
@@ -69,4 +92,8 @@
     display: flex;
     align-items: center;
     gap: .5rem;
+}
+
+ul {
+    margin-top: 1rem;
 }
