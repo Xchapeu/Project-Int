@@ -11,9 +11,9 @@ import { TopButton } from '../../components/TopButton';
 
 export const TrophiesPage = () => {
     const { logout } = useContext(AuthContext);
-    const [items, setItems] = useState(achievements);
-    const [uncompleted, setUncompleted] = useState(items);
-    const [completed, setCompleted] = useState([]);
+    const [items, setItems] = useState(() => JSON.parse(localStorage.getItem('items')) || achievements);
+    const [uncompleted, setUncompleted] = useState(() => JSON.parse(localStorage.getItem('uncompleted')) || items);
+    const [completed, setCompleted] = useState(() => JSON.parse(localStorage.getItem('completed')) || []);
     const [totalAmount, setTotalAmount] = useState(0);
     const [currentLevel, setCurrentLevel] = useState(0);
     const [pointsNeededForNextLevel, setPointsNeededForNextLevel] = useState(0)
@@ -53,6 +53,10 @@ export const TrophiesPage = () => {
     }
 
     useEffect(() => {
+        localStorage.setItem('items', JSON.stringify(items));
+        localStorage.setItem('uncompleted', JSON.stringify(uncompleted));
+        localStorage.setItem('completed', JSON.stringify(completed));
+
         const uncompletedItems = items.filter(item => !item.completed);
         const completedItems = items.filter(item => item.completed);
         const totalCompletedAmount = completedItems.reduce((total, item) => total + parseInt(item.xpAmount), 0);
@@ -61,7 +65,7 @@ export const TrophiesPage = () => {
         setCompleted(completedItems);
         setTotalAmount(totalCompletedAmount);
         setCurrentLevel(getCurrentLevel(totalCompletedAmount));
-    }, [items]);
+    }, [items, uncompleted, completed]);
 
     return (
         <>
