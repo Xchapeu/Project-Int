@@ -134,7 +134,7 @@ export const TrophiesPage = () => {
 
                     <div className='right-container'>
                         <div className="achievements-list-container">
-                            <div className="header">
+                            <div className="level-header">
                                 <strong>{currentLevel}</strong>
                             </div>
                             <h3 className='achievements-list-title-right'>

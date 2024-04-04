@@ -28,7 +28,7 @@
     min-height: 50%;
 }
 
-.achievements-list-container .header {
+.achievements-list-container .level-header {
     font-size: 8.75rem;
     font-weight: 600;
     color: var(--fourth-color);
@@ -96,4 +96,27 @@
 
 ul {
     margin-top: 1rem;
+}
+
+
+@media(max-width: 768px) {
+    .main-container {
+        flex-direction: column-reverse;
+    }
+
+    .achievements-list-container {
+        padding-left: 0;
+        padding-right: 0; 
+    }
+    ul.achievements-list {
+        padding-left: 8px;
+    }
+
+    li {
+        font-size: 12px;
+    }
+
+    .achievements-list-container .level-header {
+        width: 100%;
+    }
 }
